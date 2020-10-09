@@ -1,11 +1,16 @@
 approach for project
 
-intially:
+step1:intially
 1)Making directory structure
 2)setup express server
 3)install nodemon
 4)adding git 
 5)create routers and controllers
 6)npm install ejs
+7)create a view for home
 
 
+step2:major project
+
+1)creating partial so we use one file again and again when we needed
+    like navbar, header and footer
