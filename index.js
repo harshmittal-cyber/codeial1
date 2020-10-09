@@ -3,6 +3,7 @@ const app=express();
 const port=8000;
 
 //use express router
+//this call router and then router call controller for / then we get a response
 app.use('/',require('./routes/index.js'));
 
 
