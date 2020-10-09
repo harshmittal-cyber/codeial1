@@ -3,8 +3,14 @@ const app=express();
 const port=8000;
 const expresslayouts=require('express-ejs-layouts');
 
+//use assets
+app.use(express.static('./assets'));
 //using layouts and it is a wrapper of body for which controller is render 
 app.use(expresslayouts);
+
+//extract style and script from sub pages into the layout
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',true);
 
 
 //use express router
