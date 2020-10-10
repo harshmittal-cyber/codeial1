@@ -1,11 +1,19 @@
 const express=require('express');
+const cookieParser=require('cookie-parser');
 const app=express();
 const port=8000;
 const expresslayouts=require('express-ejs-layouts');
 const db=require('./config/mongoose');
 
+//middleware
+app.use(express.urlencoded());
+app.use(cookieParser());
+
+
+
 //use assets
 app.use(express.static('./assets'));
+
 //using layouts and it is a wrapper of body for which controller is render 
 app.use(expresslayouts);
 

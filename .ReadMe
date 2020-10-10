@@ -24,3 +24,4 @@ step3:creating a database and schema
 2)then create schema(models/users.js)
 3)Rendering sign-IN-UP pages
 4)creating form for manual authentication
+5)now adding cookie parser
