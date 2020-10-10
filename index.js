@@ -12,7 +12,16 @@ const passportLocal=require('./config/passport-local-strategy');
 //mongo store and it require session argument which is in bracket
 const MongoStore=require('connect-mongo')(session);
 
+//node-sass-middleware
+const sassMiddleware=require('node-sass-middleware');
 
+app.use(sassMiddleware({
+    src:'./assets/scss',
+    dest:'./assets/css',
+    debug:true,
+    outputStyle:'extended',
+    prefix:'/css'
+}))
 
 //middleware
 app.use(express.urlencoded());
@@ -43,7 +52,9 @@ app.use(session({
     name:'codeial',
     //todo chenge the secret before deployement in production mode
     secret:'blasomething',
+    //if identity is not established means not login then so it wont store the extra data
     saveUninitialized:false,
+    //when identity is established it dont resave if any changes is not done
     resave:false,
     cookie:{
         maxAge:(1000*60*100)
