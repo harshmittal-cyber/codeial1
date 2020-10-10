@@ -8,6 +8,11 @@ module.exports.profile=function(req,res){
 
 //render the signup page
 module.exports.signUp=function(req,res){
+    //when user is authenticated then user is not going back to sign up page 
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('user_sign_up',{
         title:"codeial | Sign Up"
     })
@@ -15,6 +20,10 @@ module.exports.signUp=function(req,res){
 
 //render the signin page
 module.exports.signIn=function(req,res){
+    //when user is authenticated then user is not going to sign in page without signout
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('user_sign_in',{
         title:"Codeial | sign In"
     })
