@@ -27,3 +27,6 @@ step3:creating a database and schema
 5)now adding cookie parser
 
 step4: Using passport.js for authentication
+1)move to branch master
+2)uses session cookie
+3)uses passport and passport-local library 
