@@ -25,3 +25,10 @@ step3:creating a database and schema
 3)Rendering sign-IN-UP pages
 4)creating form for manual authentication
 5)now adding cookie parser
+
+step4:Authentication steps
+
+1)create User(sign up)
+2)create session(sign in)
+3)show details of signed user on profile pages
+4)sign out
