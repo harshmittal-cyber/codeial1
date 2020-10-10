@@ -1,9 +1,25 @@
 const user = require('../models/user');
 const User=require('../models/user');
+
+//it is restricting the user to access the profile page without sign up or if cookies are not stored
 module.exports.profile=function(req,res){
-    return res.render('user_profile',{
-        title:"My profile"
-    })
+   if(req.cookies.user_id){
+        User.findById(req.cookies.user_id,function(err,user){
+            if(err){
+                console.log('Go back to sign in page');
+                return
+            }   
+            if(user){
+                return res.render('user_profile',{
+                    title:"User Profile",
+                    user:user
+                })
+            } 
+            return res.redirect('/users/sign-in');
+        }) 
+   }else{
+       return res.redirect('/users/sign-in');
+   }
 }
 
 //render the signup page
