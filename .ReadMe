@@ -17,3 +17,10 @@ step2:major project
 2)afetr implementing partials
 3)install express-ejs-layouts
 4)create a file of layout.ejs    
+
+step3:creating a database and schema
+
+1)first create database(config/mongoose.js)
+2)then create schema(models/users.js)
+3)Rendering sign-IN-UP pages
+4)creating form for manual authentication
