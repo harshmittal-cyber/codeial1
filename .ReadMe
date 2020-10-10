@@ -25,3 +25,5 @@ step3:creating a database and schema
 3)Rendering sign-IN-UP pages
 4)creating form for manual authentication
 5)now adding cookie parser
+
+step4: Using passport.js for authentication
