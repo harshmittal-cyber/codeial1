@@ -32,3 +32,6 @@ step4: Using passport.js for authentication
 3)uses passport and passport-local library 
 
 step5):Now installing connect mongo for storing cookie
+
+step6)database relation
+1)creating a schema for posts
