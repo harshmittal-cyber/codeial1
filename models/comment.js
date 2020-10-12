@@ -1,4 +1,4 @@
-const mongoose=require('mongooose');
+const mongoose=require('mongoose');
 
 const commentSchema=new mongoose.Schema({
     content:{
