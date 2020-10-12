@@ -15,11 +15,11 @@ module.exports.create=async function(req,res){
             post.comments.push(comment);
             //then we have to save it
             post.save();
-
+            req.flash('success','Comment Created');
             res.redirect('/');
         }
     }catch(err){
-        console.log('Error,err');
+        req.flash('error',err);
     }
 }
 
@@ -31,12 +31,13 @@ module.exports.destroy=async function(req,res){
             let postId=comment.post;
             comment.remove();
             let post=Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}});
+                req.flash('success','Comment Deleted');
                 return res.redirect('back');
         }else{
             return res.redirect('back');
 
         }
     }catch(err){
-        console.log('Érror',err);
+        req.flash('error',err);
     }
 }

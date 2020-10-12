@@ -1,3 +1,4 @@
+//for flashing notification 
 module.exports.setflash=function(req,res,next){
     res.locals.flash={
         'success': req.flash('success'),
