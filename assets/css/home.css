@@ -6,5 +6,5 @@
   #home-container #user-friends {
     width: 30%;
     padding: 10px;
-    height: 100%;
+    min-height: 100vh;
     border-left: 1px solid lightgrey; }
