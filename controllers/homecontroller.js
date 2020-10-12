@@ -2,28 +2,44 @@ const Post=require('../models/post');
 const Comment=require('../models/comment');
 const User=require('../models/user');
 
-module.exports.home=function(req,res){
+
+//Adding async
+module.exports.home= async function(req,res){
     //console.log(req.cookies);
     //res.cookie('user_id',25);
-
     //populate the user of each post
-   
-    Post.find({})
-    .populate('user')
-    .populate({
-        path:'comments',
-        populate:{
+   try{
+        //1st it will execute then other will execute
+        let posts=await Post.find({})
+        .populate('user')
+        .populate({
+            path:'comments',
+            populate:{
             path:'user'
-        }
-    })
-    .exec(function(err,posts){
+            }
+        });
+        //after first await it will executed
+        let users= await User.find({});
 
-        User.find({},function(err,users){
-            return res.render('home',{
-                title:"Codeial | Home",
-                posts:posts,
-                all_users:users
+        
+        return res.render('home',{
+            title:"Codeial | Home",
+            posts:posts,
+            all_users:users
             })
-        })
-    })
-}
+        }catch(err){
+            console.log('Error',err);
+            return;
+        }
+    }  
+    // .exec(function(err,posts){
+    // })
+
+
+//using then
+//Post.fu=ind({}).populate('comments').then(function());
+
+//let posts=Post.fu=ind({}).populate('comments').exec();
+
+//posts.then()
+
