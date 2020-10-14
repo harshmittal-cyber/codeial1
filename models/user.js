@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 const multer=require('multer');
 //used for where file path is
 const path=require('path');
-const AVATAR_PATH=path.join('/uploads/users/avatar');
+const AVATAR_PATH=path.join('/uploads/users/avatars');
 
 //creating a schema
 const userschema=new mongoose.Schema({
@@ -23,7 +23,8 @@ const userschema=new mongoose.Schema({
         type:String
     }
 
-},{//use for created at and updated at in database
+},{
+    //use for created at and updated at in database
     timestamps:true
 });
 
@@ -35,7 +36,7 @@ let storage = multer.diskStorage({
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now())
     }
-  })
+  });
 
 //static
 //single is used for only 1 file is uploaded at instance

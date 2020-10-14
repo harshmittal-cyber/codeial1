@@ -13,7 +13,7 @@ const passportLocal=require('./config/passport-local-strategy');
 //mongo store and it require session argument which is in bracket
 const MongoStore=require('connect-mongo')(session);
 
-//node-sass-middleware
+//node-sass-middlewarenpm 
 const sassMiddleware=require('node-sass-middleware');
 //connect flash for pop up message
 const flash=require('connect-flash');
@@ -31,10 +31,11 @@ app.use(sassMiddleware({
 app.use(express.urlencoded());
 app.use(cookieParser());
 
-
-
 //use assets
 app.use(express.static('./assets'));
+
+//make the uploads path available to the browser
+app.use('/uploads',express.static(__dirname +'/uploads'));
 
 //using layouts and it is a wrapper of body for which controller is render 
 app.use(expresslayouts);

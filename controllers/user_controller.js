@@ -11,15 +11,7 @@ module.exports.profile=function(req,res){
 }
 
 module.exports.update=async function(req,res){
-    // if(req.user.id==req.params.id){
-    //     User.findByIdAndUpdate(req.params.id, req.body,function(err,user){
-    //         req.flash('success','Updated') 
-    //         return res.redirect('back');
-    //     })
-    // }else{
-    //     req.flash('error','Unauthorized'); 
-    //     return res.status(401).send('Unauthorized');
-    // }
+  
     if(req.user.id == req.params.id){
         try{
             let user=await User.findById(req.params.id);
@@ -32,7 +24,7 @@ module.exports.update=async function(req,res){
 
                 if(req.file){
                     //this is saving the path of the uploaded file into the avatr fielf into the user
-                    user.avatar=user.avatarPath + '/' +req.file.filename
+                    user.avatar=User.avatarPath + '/' + req.file.filename
                 }
                 user.save();
                 return res.redirect('back');

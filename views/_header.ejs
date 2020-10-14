@@ -18,6 +18,8 @@
                     <li>
                         <a href="/users/sign-out">Sign Out</a>
                     </li>
+                    <img src="<%= user.avatar %>" alt="<%= user.name %>" width="25" height="25" style="border-radius: 50%; position: relative; top:-3px;" >
+
        
                 <% }else{ %>
                     <li>
@@ -29,7 +31,10 @@
                     </li>
                     
                 <% } %>
+
             </ul>
+
         </div>
+
     </nav>
 </header>

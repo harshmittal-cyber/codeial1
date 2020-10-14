@@ -61,7 +61,8 @@
                 type:'get',
                 url:$(deleteLink).prop('href'),
                 success:function(data){
-                    $(`#post-${data.post_id}`).remove();
+                    console.log(data);
+                    $(`#post-${data.data.post_id}`).remove();
                 },error:function(error){
                     console.log(error.responseText);
                 }
