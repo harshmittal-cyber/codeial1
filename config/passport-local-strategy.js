@@ -9,20 +9,22 @@ passport.use(new LocalStrategy({
     usernameField:'email',
     passReqToCallback:true
     },
-    function(req,email,password,done){
+    function(req, email, password, done){
         //find a user and establish the identity
         User.findOne({email:email},function(err,user){
+            // req.flash('success','Invalid Username/Password');
             if(err){
                 req.flash('error',err);
                 return done(err);
             }
             //if user not found or password not matches
             if(!user || user.password !=password){
-                req.flash('error','Invalid Username/Password');
+                req.flash('error', 'Invalid Username/Password');
                 //false means authentication is not done yet
                 return done(null,false)
             }
             //user found
+           
             return done(null,user);
         })
     }

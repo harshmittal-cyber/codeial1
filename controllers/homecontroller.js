@@ -11,6 +11,7 @@ module.exports.home= async function(req,res){
    try{
         //1st it will execute then other will execute
         let posts=await Post.find({})
+        .sort('-createdAt')
         .populate('user')
         .populate({
             path:'comments',
