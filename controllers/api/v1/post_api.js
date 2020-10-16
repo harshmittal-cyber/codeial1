@@ -26,7 +26,7 @@ module.exports.destroy=async function(req,res){
         let post=await Post.findById(req.params.id);
         //We have to check whether the same user is deleeting post or not
         // .id means converting the object id into string
-        // if (post.user == req.user.id){
+        if (post.user == req.user.id){
             post.remove();
 
             await Comment.deleteMany({post:req.params.id});
@@ -36,12 +36,14 @@ module.exports.destroy=async function(req,res){
                 message:"Post and associated comments deleted successfully"
             })
             //if user is not matched
-        // }else{
-        //     return res.redirect('back');
-        // }
+        }else{
+            res.json(401,{
+                message:"You cannot delete this post!"
+            })
+        }
     }catch(err){
         console.log('***********',err);
-        req.json(500,{
+        return res.json(500,{
             message:"Internal Server Error"
         });
     }
