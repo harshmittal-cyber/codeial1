@@ -18,6 +18,10 @@ router.post('/createSession',passport.authenticate(
 ),usercontroller.createSession);
 
 
-router.get('/sign-out',usercontroller.destroySession)
+router.get('/sign-out',usercontroller.destroySession);
+
+//use for google-oauth
+router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
+router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/users/sign-in'}),usercontroller.createSession);
 
 module.exports=router;

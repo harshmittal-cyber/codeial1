@@ -10,6 +10,7 @@ const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
 const passportJWT=require('./config/passport-jwt-startegy');
+const passportgoogle=require('./config/passport-google-oauth2-strategy');
 //mongo store and it require session argument which is in bracket
 const MongoStore=require('connect-mongo')(session);
 
