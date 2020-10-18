@@ -75,23 +75,26 @@ module.exports.signIn=function(req,res){
 //get the signup data
 module.exports.create=function(req,res){
     if(req.body.password!=req.body.confirmpassword){
+        req.flash('error','Passwords do not match')
         return res.redirect('back');
     }
 
     User.findOne({email:req.body.email},function(err,user){
         if(err){
+            req.flash('error',err);
             console.log('error in finding user in signing up');
-            return
+            return;
         }    
         if(!user){
             User.create(req.body,function(err,user){
                 if(err){
                     console.log('error in creating a user while signing up');
-                    return
+                    return;
                 }
                 return res.redirect('/users/sign-in');
             })
         }else{
+            req.flash('success','You have signed up,login to continue!');
             return res.redirect('back');
         }
     })

@@ -8,6 +8,7 @@ module.exports.create =async function(req, res){
         user: req.user._id
     });
     if(req.xhr){
+        post=await post.populate('user','name').execPopulate();
         return res.status(200).json({
             data:{
                 post:post
@@ -19,7 +20,8 @@ module.exports.create =async function(req, res){
         return res.redirect('back');
     }catch(err){
         req.flash('error',err);
-        return;
+        console.log(err);
+        return res.redirect('back');
     }
 }
 
@@ -42,14 +44,16 @@ module.exports.destroy=async function(req,res){
                 })
             }
 
-            req.flash('success','Post Deleted')
+            req.flash('success','Post and associated comments Deleted')
             return res.redirect('back');
             //if user is not matched
         }else{
+            req.flash('error','You cannot delete this post');
             return res.redirect('back');
         }
     }catch(err){
         req.flash('error',err);
+        return res.redirect('back');
     }
 }
     

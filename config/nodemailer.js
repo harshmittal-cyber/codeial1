@@ -5,15 +5,15 @@ const path=require('path');
 //this path send mails
 let transporter=nodemailer.createTransport({
     service:'gmail',
+    host:'smtp.gmail.com',
     post:587,
     secure:false,
-    auth:{
-        user:'mittalharsh4321@gmail.com',
-        pass:'erharsh8492'
+    auth:{    
+        user:'harshmittal7852',
+        pass:'codingninjas'
     }
 });
 
-//ejs
 let renderTemplate=(data,relativePath)=>{
     let mailHTML;
     ejs.renderFile(
