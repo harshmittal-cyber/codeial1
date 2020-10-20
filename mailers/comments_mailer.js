@@ -16,8 +16,8 @@ exports.newComment=(comment) => {
             console.log('Error in sending mail',err)
             return;
         }
-// i dont understand the error bro escalating forno w
-        console.log('Message sent',info);
+
+        // console.log('Message sent',info);
         return;
     })
 }

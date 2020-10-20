@@ -10,7 +10,7 @@ let transporter=nodemailer.createTransport({
     secure:false,
     auth:{    
         user:'harshmittal7852',
-        pass:'codingninjas'
+        pass:'erharsh8492'
     }
 });
 
