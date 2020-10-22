@@ -10,6 +10,7 @@ module.exports.home= async function(req,res){
     //populate the user of each post
    try{
         //1st it will execute then other will execute
+        //change::populate the likes of each post and comments
         let posts=await Post.find({})
         .sort('-createdAt')
         .populate('user')
@@ -17,8 +18,13 @@ module.exports.home= async function(req,res){
             path:'comments',
             populate:{
                 path:'user'
+            },
+            //for comments and nect one for post
+            populate:{
+                path:'likes'
             }
-        });
+        }).populate('çomments')
+        .populate('likes')
         //after first await it will executed
         let users= await User.find({});
 

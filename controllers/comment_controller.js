@@ -3,6 +3,7 @@ const Post=require('../models/post');
 const commentsMailer=require('../mailers/comments_mailer');
 const commentEmailWorker=require('../workers/comment_email_worker');
 const queue = require('../config/kue');
+const Like=require('../models/like');
 
 
 module.exports.create=async function(req,res){
@@ -54,9 +55,15 @@ module.exports.destroy=async function(req,res){
         //check whether comment belong to user or now
         if(comment.user==req.user.id){
             let postId=comment.post;
+            
             comment.remove();
+            
             let post=Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}});
             
+            //change:destroy the associated likes for this comment
+            await Like.deleteMany({likeable:comment,_id, onModel:'Comment'});
+
+
             if(req.xhr){
                 return res.status(200).json({
                     data:{

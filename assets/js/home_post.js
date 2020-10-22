@@ -1,3 +1,5 @@
+const { toggleLike } = require("../../controllers/likes_controllers");
+
 {
     //method to submit the form data for new post using Ajax
     let createPost=function(){
@@ -19,6 +21,9 @@
                     //call the create comment class
                     new PostComments(data.data.post._id);
 
+                    //change::enale the functionality of toggle like button on the new post
+                    new toggleLike($('.toggle-like-button',newPost));
+
                     new Noty({
                         theme: 'relax',
                         text: "Post published!",
@@ -37,6 +42,7 @@
 
     //method to create a post in DOM
     let newPostDom=function(post){
+        //chnage ::show the count of zero likes on this post
         return $(`<li id="post-${post._id}">
                     <p>
                 
@@ -48,6 +54,13 @@
                         ${ post.content}<br>
                         <small>
                             ${post.user.name}
+                        </small>
+                        <br>
+                        <small>
+                            <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${post._id}&type=Post">
+                                0 Likes
+                            </a>
+                        
                         </small>
                     </p>
                     <div class="post-comment">
@@ -103,15 +116,6 @@
             new PostComments(postId);
         });
     }
-
-
-
-
-
-
-
-
-
 
     createPost();
     convertPostsToAjax();
