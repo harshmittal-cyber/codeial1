@@ -21,7 +21,13 @@ const userschema=new mongoose.Schema({
     },
     avatar:{
         type:String
-    }
+    },
+    friendships:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Friendship'
+        }
+    ]
 
 },{
     //use for created at and updated at in database
