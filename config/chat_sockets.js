@@ -6,6 +6,14 @@ module.exports.chatSockets=function(socketServer){
     
         socket.on('disconnect',function(){
             console.log('socket disconnected !');
+        });
+        //for joining chat room
+        socket.on('join_room',function(data){
+            console.log('joining request rec',data);
+
+            socket.join(data.chatroom);
+            //this tell us to evry user that this user join the chat room
+            io.in(data.chatroom).emit('user_joined',data);
         })
     })
 }
