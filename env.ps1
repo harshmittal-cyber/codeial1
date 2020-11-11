@@ -1,5 +1,5 @@
 $env:CODEIAL_ENVIRONMENT="production";
-$env:CODEIAL_ASSET_PATH="./assets";
+$env:CODEIAL_ASSET_PATH="./public/assets";
 $env:CODEIAL_JWT_SECRET="SmBRDWZ5veOBQJlbVSSzlJULmLwpmrT6";
 $env:CODEIAL_GOOGLE_CLIENT_ID="906700903822-2094shr8ajp9qi090nf6o4e6iaek5lpd.apps.googleusercontent.com";
 $env:CODEIAL_GOOGLE_CLIENT_SECRET="_fGoUxzktOrGKr-yu9MGP4XQ";

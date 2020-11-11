@@ -1,1 +1,8 @@
 [0mGET / [36m304[0m 102.295 ms - -[0m
+[0mGET / [36m304[0m 101.358 ms - -[0m
+[0mGET / [36m304[0m 74.749 ms - -[0m
+[0mGET /users/sign-out [36m302[0m 15.404 ms - 46[0m
+[0mGET / [32m200[0m 53.797 ms - 9412[0m
+[0mGET /users/sign-in [36m304[0m 9.053 ms - -[0m
+[0mPOST /users/createSession [36m302[0m 4.061 ms - 46[0m
+[0mGET / [32m200[0m 49.006 ms - 13310[0m
