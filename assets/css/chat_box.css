@@ -7,7 +7,8 @@
   width: 300px;
   background: white;
   padding: 5px;
-  box-shadow: 1px 1px 1px 1px lightgrey; }
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  z-index: 1; }
   #user-chat-box #chat-messages-list {
     list-style: none;
     padding: 10px;
@@ -20,7 +21,7 @@
       #user-chat-box #chat-messages-list .other-message span {
         display: inline-block;
         padding: 15px;
-        background-color: #ffa0a0; }
+        background-image: linear-gradient(62deg, #fbab7e, #f7ce68); }
     #user-chat-box #chat-messages-list .self-message {
       text-align: right;
       padding: 5px; }
